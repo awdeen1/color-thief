@@ -1,0 +1,18 @@
+{% include "header.html" %}
+    <body class="bg-dark">
+        <div class="col-6 my-5 p-4 mx-auto rounded bg-secondary text-light text-center">
+            <h1 >Image Color Pallette Generator</h1>
+                <form class='my-2' method=post enctype=multipart/form-data>
+                  <input type=file name=image>
+                  <input type=submit value=Upload>
+                </form>
+                {% if filename %}
+                <img style="width: 20rem;" src="{{url_for('uploads', filename=filename)}}">
+                <div class="row bg-light my-2">
+                {% for color in palette %}
+                    <h1 class="col-3" style="color: {{color}}">{{color}}</h1>
+                {% endfor %}
+                </div>
+                {% endif %}
+        </div>
+{% include "footer.html" %}
